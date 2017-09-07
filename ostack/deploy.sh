@@ -3,7 +3,6 @@ set -e
 # Provisions an OpenLava cluster in OpenStack
 # The script assumes that env vars for authentication with OpenStack are present.
 
-## Customise this ##
 export TF_VAR_name="$(awk -v var="$PORTAL_DEPLOYMENT_REFERENCE" 'BEGIN {print tolower(var)}')"
 export TF_VAR_DEPLOYMENT_KEY_PATH="$PUBLIC_KEY"
 
