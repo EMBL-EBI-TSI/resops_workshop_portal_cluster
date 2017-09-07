@@ -1,2 +1,2 @@
 ---
-openstack_internal_subnet: "10.22.100.0/8"
+openstack_internal_subnet: "{{ lookup('env', 'TF_VAR_openstack_subnet')}}"
