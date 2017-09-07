@@ -93,7 +93,7 @@
   vars_files:
     - group_vars/openlava_master/users.yml
 
-  pre_tasks:
+  pre_tasks:    
     - include: roles/common/tasks/hosts_template.yml
     - include: roles/common/tasks/packages.yml
     - include: roles/common/tasks/ssh.yml
