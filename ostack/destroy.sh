@@ -4,7 +4,7 @@ set -e
 # The script assumes that env vars for authentication with OpenStack are already present.
 
 ## Customise this ##
-export TF_VAR_DEPLOYMENT_KEY_PATH=$PORTAL_DEPLOYMENTS_ROOT'/'$PORTAL_DEPLOYMENT_REFERENCE'/'$PORTAL_DEPLOYMENT_REFERENCE'.pub'
+export TF_VAR_DEPLOYMENT_KEY_PATH="$PUBLIC_KEY"
 
 # Destroy everything
 cd ostack/terraform || exit
