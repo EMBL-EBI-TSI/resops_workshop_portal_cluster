@@ -1,6 +1,6 @@
 resource "openstack_compute_keypair_v2" "ssh_keypair" {
   name       = "${var.name}_keypair"
-  public_key = "${file("${var.DEPLOYMENT_KEY_PATH}")}"
+  public_key = "${var.USER_KEY}"
 }
 
 resource "openstack_compute_instance_v2" "openlava_master" {
