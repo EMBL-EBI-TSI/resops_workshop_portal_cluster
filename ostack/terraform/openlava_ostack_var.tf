@@ -101,3 +101,8 @@ variable "DEPLOYMENT_KEY_PATH" {
   type        = "string"
   description = "The path to the full SSH KEY used to deploy & provision the VM"
 }
+
+variable "USER_KEY" {
+  type        = "string"
+  description = "The user given or configuration SSH KEY injected into VMs"
+}

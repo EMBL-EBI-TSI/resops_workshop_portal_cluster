@@ -5,6 +5,7 @@ set -e
 
 export TF_VAR_name="$(awk -v var="$PORTAL_DEPLOYMENT_REFERENCE" 'BEGIN {print tolower(var)}')"
 export TF_VAR_DEPLOYMENT_KEY_PATH="$PUBLIC_KEY"
+export TF_VAR_USER_KEY="$profile_public_key"
 
 # Launch provisioning of the infrastructure
 cd ostack/terraform || exit
