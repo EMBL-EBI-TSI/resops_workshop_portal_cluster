@@ -6,6 +6,8 @@ set -e
 export TF_VAR_name="$(awk -v var="$PORTAL_DEPLOYMENT_REFERENCE" 'BEGIN {print tolower(var)}')"
 export TF_VAR_DEPLOYMENT_KEY_PATH="$PUBLIC_KEY"
 
+export PATH=/usr/lib/terraform_0.9.11:$PATH
+
 # Launch provisioning of the infrastructure
 cd ostack/terraform || exit
 terraform apply -parallelism=10 -input=false -state=$PORTAL_DEPLOYMENTS_ROOT'/'$PORTAL_DEPLOYMENT_REFERENCE'/terraform.tfstate'
