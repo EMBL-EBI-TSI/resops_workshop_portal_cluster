@@ -28,5 +28,5 @@ cd ostack/ansible || exit
 TF_STATE=$PORTAL_DEPLOYMENTS_ROOT'/'$PORTAL_DEPLOYMENT_REFERENCE'/terraform.tfstate' ansible-playbook -i /usr/local/bin/terraform-inventory --extra-vars "master_ip=$master_ip" -u centos -b deployment.yml
 
 # Kill local ssh-agent
-eval "$(ssh-agent -k)" &> /dev/null
+eval "$(ssh-agent -k)"
 echo "Deployment complete!"
