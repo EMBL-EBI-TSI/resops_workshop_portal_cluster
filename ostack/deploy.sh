@@ -29,3 +29,4 @@ TF_STATE=$PORTAL_DEPLOYMENTS_ROOT'/'$PORTAL_DEPLOYMENT_REFERENCE'/terraform.tfst
 
 # Kill local ssh-agent
 eval "$(ssh-agent -k)" &> /dev/null
+echo "Deployment complete!"
