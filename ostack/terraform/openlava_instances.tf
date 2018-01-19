@@ -11,11 +11,9 @@ resource "openstack_compute_instance_v2" "openlava_master" {
   key_pair          = "${openstack_compute_keypair_v2.ssh_keypair.name}"
   availability_zone = "${var.availability_zone}"
 
-  security_groups = ["${openstack_compute_secgroup_v2.openlava_basic_sec.id}",
-    "${openstack_compute_secgroup_v2.openlava_cluster.id}",
-    "${openstack_compute_secgroup_v2.openlava_HTTP.id}",
-    "${openstack_compute_secgroup_v2.openlava_ganglia_server.id}",
-    "${openstack_compute_secgroup_v2.openlava_NTP.id}",
+  security_groups = ["${openstack_networking_secgroup_v2.openlava_basic_sec.id}",
+    "${openstack_networking_secgroup_v2.openlava_cluster.id}",
+    "${openstack_networking_secgroup_v2.openlava_master_ports.id}",
   ]
 
   network {
@@ -43,7 +41,6 @@ resource "openstack_blockstorage_volume_v2" "homes_volume" {
   }
 }
 
-
 resource "openstack_blockstorage_volume_v2" "data_volume" {
   name        = "${var.name}-data"
   description = "Volume storing data for the ${var.name} cluster"
@@ -54,7 +51,6 @@ resource "openstack_blockstorage_volume_v2" "data_volume" {
   }
 }
 
-
 resource "openstack_compute_instance_v2" "openlava_nfs" {
   name = "${var.name}_nfs"
 
@@ -63,9 +59,9 @@ resource "openstack_compute_instance_v2" "openlava_nfs" {
   key_pair          = "${openstack_compute_keypair_v2.ssh_keypair.name}"
   availability_zone = "${var.availability_zone}"
 
-  security_groups = ["${openstack_compute_secgroup_v2.openlava_basic_sec.id}",
-    "${openstack_compute_secgroup_v2.openlava_NFSv4.id}",
-    "${openstack_compute_secgroup_v2.openlava_ganglia_client.id}",
+  security_groups = ["${openstack_networking_secgroup_v2.openlava_basic_sec.id}",
+    "${openstack_networking_secgroup_v2.openlava_NFSv4.id}",
+    "${openstack_networking_secgroup_v2.openlava_ganglia_client.id}",
   ]
 
   network {
@@ -96,9 +92,9 @@ resource "openstack_compute_instance_v2" "openlava_nodes" {
   key_pair          = "${openstack_compute_keypair_v2.ssh_keypair.name}"
   availability_zone = "${var.availability_zone}"
 
-  security_groups = ["${openstack_compute_secgroup_v2.openlava_basic_sec.id}",
-    "${openstack_compute_secgroup_v2.openlava_cluster.id}",
-    "${openstack_compute_secgroup_v2.openlava_ganglia_client.id}",
+  security_groups = ["${openstack_networking_secgroup_v2.openlava_basic_sec.id}",
+    "${openstack_networking_secgroup_v2.openlava_cluster.id}",
+    "${openstack_networking_secgroup_v2.openlava_ganglia_client.id}",
   ]
 
   network {
