@@ -125,6 +125,10 @@
   firewalld: port="{{ item }}" zone=internal permanent=true state=enabled immediate=true
   with_items: "{{ openlava_ports }}"
 
+- name: Wait for firewall to stabilise
+  pause:
+      seconds: 5
+
 - name: Close node to avoid having jobs running on master
   command: "badmin hclose"
   changed_when: false
