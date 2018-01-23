@@ -127,7 +127,7 @@
 
 - name: Wait for firewall to stabilise
   pause:
-      seconds: 5
+      seconds: 10
 
 - name: Close node to avoid having jobs running on master
   command: "badmin hclose"
