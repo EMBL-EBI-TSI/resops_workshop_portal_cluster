@@ -125,9 +125,9 @@
   firewalld: port="{{ item }}" zone=internal permanent=true state=enabled immediate=true
   with_items: "{{ openlava_ports }}"
 
-- name: Wait for firewall to stabilise
-  pause:
-      seconds: 10
+- name: Wait for SSH to be available again
+  local_action:
+    module: wait_for host="{{ master_ip }}" search_regex=OpenSSH port=22 delay=2
 
 - name: Close node to avoid having jobs running on master
   command: "badmin hclose"
