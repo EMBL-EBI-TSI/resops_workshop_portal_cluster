@@ -127,7 +127,7 @@
 
 - name: Wait for SSH to be available again
   local_action:
-    module: wait_for host="{{ master_ip }}" search_regex=OpenSSH port=22 delay=2
+    module: wait_for host="{{ master_ip }}" search_regex=OpenSSH port=22 delay=5
 
 - name: Close node to avoid having jobs running on master
   command: "badmin hclose"
